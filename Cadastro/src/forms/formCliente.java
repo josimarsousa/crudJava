@@ -65,6 +65,10 @@ public class formCliente extends JFrame{
 	}
 	
 	public static void main (String args[]) {
-			new formCliente().setVisible(true);
+			
+			formCliente cliente = new formCliente();
+			cliente.setVisible(true);
+			cliente.setLocationRelativeTo(null);
+			
 		}
 }
