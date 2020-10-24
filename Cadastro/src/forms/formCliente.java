@@ -61,14 +61,10 @@ public class formCliente extends JFrame{
 		jblimpar.setBounds(20,340,90,30);
 		jbsalvar.setBounds(115,340,90,30);
 		jbsair.setBounds(430,340,90,30);
+		
+		
 			
 	}
 	
-	public static void main (String args[]) {
-			
-			formCliente cliente = new formCliente();
-			cliente.setVisible(true);
-			cliente.setLocationRelativeTo(null);
-			
-		}
+	
 }
