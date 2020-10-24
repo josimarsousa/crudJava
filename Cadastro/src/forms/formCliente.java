@@ -27,6 +27,9 @@ public class formCliente extends JFrame{
 		jtfone= new JTextField("");
 		jlcpf = new JLabel("Cpf:");
 		jtcpf= new JTextField("");
+		jblimpar = new JButton("Limpar");
+		jbsalvar = new JButton("Salvar");
+		jbsair = new JButton("Sair");
 		
 		getContentPane().setLayout(null);
 		
@@ -41,6 +44,9 @@ public class formCliente extends JFrame{
 		getContentPane().add(jtfone);
 		getContentPane().add(jlcpf);
 		getContentPane().add(jtcpf);
+		getContentPane().add(jblimpar);
+		getContentPane().add(jbsalvar);
+		getContentPane().add(jbsair);
 		
 		jlcod.setBounds(20,20,100,15);
 		jtcod.setBounds(20, 40, 80, 25);
@@ -52,6 +58,9 @@ public class formCliente extends JFrame{
 		jtfone.setBounds(20,140,120,25);
 		jlcpf.setBounds(280,120,150,15);
 		jtcpf.setBounds(280,140,200,25);
+		jblimpar.setBounds(20,340,90,30);
+		jbsalvar.setBounds(115,340,90,30);
+		jbsair.setBounds(430,340,90,30);
 			
 	}
 	
