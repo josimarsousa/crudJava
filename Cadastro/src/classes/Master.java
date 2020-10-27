@@ -20,6 +20,9 @@ public class Master {
 		login.setLocationRelativeTo(null);
 		
 		
+		
+		
+		
 	}
 
 }

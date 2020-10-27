@@ -4,6 +4,7 @@ public class login {
 	
 	private String userName;
 	private String userSenha;
+	private String mensagem;
 	
 	
 	public String getUserName() {

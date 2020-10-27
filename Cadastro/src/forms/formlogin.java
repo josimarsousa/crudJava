@@ -1,15 +1,20 @@
 package forms;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class formlogin extends JFrame {
+public class formlogin extends JFrame implements ActionListener {
 
-	JLabel jllogName, jllogSenha;
-	JTextField jtlogName, jtlogSenha;
-	JButton jblogUser, jblogSair;
+	private JLabel jllogName, jllogSenha;
+	private JTextField jtlogName, jtlogSenha;
+	private JButton jblogUser, jblogSair;
+	
 	
 	public formlogin() {
 		
@@ -41,6 +46,17 @@ public class formlogin extends JFrame {
 		jblogSair.setBounds(160,110,90,25);
 		
 	}
+		
+	
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == jblogUser) {
+				 
+				
+				System.out.println(jtlogName.getName());
+				
+			}
+		}
 	
 	
 }
