@@ -1,5 +1,7 @@
 package classes;
 
+import javax.swing.JButton;
+
 import forms.formCliente;
 import forms.formFornecedor;
 import forms.formlogin;

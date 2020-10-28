@@ -6,10 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class formlogin extends JFrame implements ActionListener {
+public class formlogin extends JFrame {
 
 	private JLabel jllogName, jllogSenha;
 	private JTextField jtlogName, jtlogSenha;
@@ -45,18 +46,17 @@ public class formlogin extends JFrame implements ActionListener {
 		jblogUser.setBounds(65,110,90,25);
 		jblogSair.setBounds(160,110,90,25);
 		
-	}
 		
+		jblogUser.addActionListener(new ActionListener() {
 	
-		public void actionPerformed(ActionEvent e) {
-			
-			if(e.getSource() == jblogUser) {
-				 
-				
-				System.out.println(jtlogName.getName());
-				
-			}
-		}
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getSource() == jblogUser);
+				String mensagem = jtlogName.getText();
+				System.out.println(mensagem);
+		
+	}});
 	
-	
+	}
 }
