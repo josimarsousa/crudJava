@@ -16,7 +16,7 @@ public class formlogin extends JFrame {
 	private JTextField jtlogName, jtlogSenha;
 	private JButton jblogUser, jblogSair;
 	
-	
+		
 	public formlogin() {
 		
 		setTitle("Login");
@@ -56,7 +56,16 @@ public class formlogin extends JFrame {
 				String mensagem = jtlogName.getText();
 				System.out.println(mensagem);
 		
-	}});
-	
+		}});
+		
+		jblogSair.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == jblogSair);	
+				
+			}
+			
+		});	
 	}
 }
