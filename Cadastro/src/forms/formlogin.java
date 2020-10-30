@@ -16,7 +16,7 @@ public class formlogin extends JFrame {
 	private JTextField jtlogName, jtlogSenha;
 	private JButton jblogUser, jblogSair;
 	
-		
+			
 	public formlogin() {
 		
 		setTitle("Login");
@@ -63,6 +63,7 @@ public class formlogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == jblogSair);	
+				System.exit(EXIT_ON_CLOSE);
 				
 			}
 			
