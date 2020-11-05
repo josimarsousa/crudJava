@@ -54,10 +54,13 @@ public class formlogin extends JFrame {
 				// TODO Auto-generated method stub
 				if(e.getSource() == jblogUser);
 				String mensagem = jtlogName.getText();
+				String mensagemSenha = jtlogSenha.getText();
 				System.out.println(mensagem);
+				System.out.println(mensagemSenha);
 		
 		}});
 		
+				
 		jblogSair.addActionListener(new ActionListener() {
 			
 			@Override

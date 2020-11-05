@@ -10,14 +10,14 @@ public class Master {
 
 	public static void main(String[] args) {
 		
-		//formCliente cliente = new formCliente();
-		//formFornecedor fornecedor = new formFornecedor();
+		formCliente cliente = new formCliente();
+		formFornecedor fornecedor = new formFornecedor();
 		formlogin login = new formlogin();
 		
-		/*cliente.setVisible(true);
+		cliente.setVisible(true);
 		cliente.setLocationRelativeTo(null);
 		fornecedor.setVisible(true);
-		fornecedor.setLocationRelativeTo(null);*/
+		fornecedor.setLocationRelativeTo(null);
 		login.setVisible(true);
 		login.setLocationRelativeTo(null);
 		
