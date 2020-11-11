@@ -1,12 +1,12 @@
 package forms;
-
+import java.sql.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class formCliente extends JFrame{
-
+	
 	JLabel jlcod, jlnome, jlendereco, jlfone, jlcpf;
 	JTextField jtcod, jtnome, jtendereco, jtfone, jtcpf;
 	
@@ -61,10 +61,14 @@ public class formCliente extends JFrame{
 		jblimpar.setBounds(20,340,90,30);
 		jbsalvar.setBounds(115,340,90,30);
 		jbsair.setBounds(430,340,90,30);
-		
-		
-			
+	
 	}
 	
-	
+
+		
+
 }
+	
+	
+	
+
