@@ -4,24 +4,25 @@ import java.sql.*;
 public class Conexao {
 	
 	static String status="";
-	
+		
 	public static Connection getConnection() {
 		
-		Connection conex=null;
+		Connection conn = null;
+		
 		try {
-			
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url ="jdbc:mysql://localhost/Control?user=root&password=12345678";
-			conex = DriverManager.getConnection(url);
-			status = "connection opened";
-		}catch (SQLException e) {
-			status = e.getMessage();
-		}catch (ClassNotFoundException e) {
-			status = e.getMessage();
-		}catch (Exception e) {
-			status = e.getMessage();
-		}
-		return conex;
-		}
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			String url = "jdbc:mysql://localhost/mysql?user=root&password=";
+			conn = DriverManager.getConnection(url);
+			System.out.println("Conectado ao banco.");
+	    } 
+		catch (SQLException e) {
+	        status = e.getMessage();
+	    }catch (ClassNotFoundException e) {
+	    	status = e.getMessage();
+	    }catch(Exception e) {
+	    	status = e.getMessage();
+	    }
+		return conn;
+	}	
 }
 	
