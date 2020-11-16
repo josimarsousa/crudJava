@@ -11,7 +11,7 @@ public class Conexao {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			String url = "jdbc:mysql://localhost/mysql?user=root&password=";
+			String url = "jdbc:mysql://localhost/Control?user=root&password=";
 			conn = DriverManager.getConnection(url);
 			System.out.println("Conectado ao banco.");
 	    } 
@@ -23,6 +23,7 @@ public class Conexao {
 	    	status = e.getMessage();
 	    }
 		return conn;
+		
 	}	
 }
 	
