@@ -1,10 +1,11 @@
 package classes;
 
+
 public class Clientes{
 	
 	private int codCliente;
 	private String nomeCliente;
-	private String endCliente;
+	private String enderecoCliente;
 	private String foneCliente;
 	private String cpfCliente;
 	
@@ -18,11 +19,11 @@ public class Clientes{
 	}
 	
 	public String getEndCliente() {
-		return endCliente;
+		return enderecoCliente;
 	}
 	
 	public void setEndCliente(String endCliente) {
-		this.endCliente = endCliente;
+		this.enderecoCliente = endCliente;
 	}
 	
 	public String getFoneCliente() {
@@ -44,7 +45,6 @@ public class Clientes{
 	public int getCodCliente() {
 		return codCliente;
 	}
-	
 	
 	
 
