@@ -16,7 +16,7 @@ public class Conexao {
 			String url = "jdbc:mysql://localhost/Control?user=root&password=";
 			conn = DriverManager.getConnection(url);
 			System.out.println("Conectado ao banco.");
-			
+			System.out.println();
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT codCliente, nomeCliente, enderecoCliente, foneCliente, cpfCliente FROM Clientes");
 			
