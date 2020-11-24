@@ -1,9 +1,12 @@
 package forms;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import classes.Conexao;
 
 public class formCliente extends JFrame{
 	
@@ -61,10 +64,20 @@ public class formCliente extends JFrame{
 		jblimpar.setBounds(20,340,90,30);
 		jbsalvar.setBounds(115,340,90,30);
 		jbsair.setBounds(430,340,90,30);
+		
+		jbsalvar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == jbsalvar);
+					
+				
+			}
+		});
 	
 	}
 	
-
+	
 		
 
 }

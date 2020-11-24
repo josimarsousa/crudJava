@@ -1,15 +1,17 @@
 package classes;
 
+import forms.formCliente;
+
 public class Master{
 	
 public static void main(String[] args) {
 	
-	Clientes cliente = new Clientes();
+	formCliente cliente = new formCliente();
 	
 	Conexao.getConnection();
 	System.out.println(Conexao.status);
 	
-	
+	cliente.setVisible(true);
 	
 	
 	}
