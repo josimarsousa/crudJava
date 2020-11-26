@@ -70,6 +70,8 @@ public class formCliente extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == jbsalvar);
+				
+				System.out.println("");
 					
 				
 			}
