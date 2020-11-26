@@ -72,6 +72,7 @@ public class formCliente extends JFrame{
 				if(e.getSource() == jbsalvar);
 				
 				System.out.println("");
+				System.out.println("");
 					
 				
 			}
