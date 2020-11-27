@@ -65,15 +65,25 @@ public class formCliente extends JFrame{
 		jbsalvar.setBounds(115,340,90,30);
 		jbsair.setBounds(430,340,90,30);
 		
+		
+		
 		jbsalvar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == jbsalvar);
 				
-				System.out.println("");
-				System.out.println("");
+				Connection conn = null;
+				
+				try {
+					Statement stmt = conn.createStatement();
+					System.out.println();
 					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 			}
 		});
