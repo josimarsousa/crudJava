@@ -77,7 +77,7 @@ public class formCliente extends JFrame{
 				
 				try {
 					Statement stmt = conn.createStatement();
-					System.out.println();
+					
 					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
