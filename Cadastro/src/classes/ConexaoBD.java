@@ -3,20 +3,21 @@ import java.sql.*;
 
 import javax.swing.JOptionPane;
 
-public class Conexao {
+public class ConexaoBD {
 	
-	static String status="";
+	//static String status="";
 		
-	public static Connection getConnection() {
+	public static Connection getConnection() throws SQLException {
 		
 		Connection conn = null;
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost/Control?user=root&password=";
 			conn = DriverManager.getConnection(url);
-			System.out.println("Conectado ao banco.");
+			//System.out.println("Conectado ao banco.");
 			System.out.println();
+			
 			/*Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT codCliente, nomeCliente, enderecoCliente, foneCliente, cpfCliente FROM Clientes");
 			
@@ -31,12 +32,8 @@ public class Conexao {
 			}*/
 			
 	    } 
-		catch (SQLException e) {
-	        status = e.getMessage();
-	    }catch (ClassNotFoundException e) {
-	    	status = e.getMessage();
-	    }catch(Exception e) {
-	    	status = e.getMessage();
+		catch (ClassNotFoundException e) {
+	    	throw new SQLException(e.getMessage());
 	    }
 		return conn;
 		

@@ -6,7 +6,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import classes.Conexao;
+
+import com.mysql.cj.xdevapi.Statement;
+
+import classes.Clientes;
+import classes.ConexaoBD;
 
 public class formCliente extends JFrame{
 	
@@ -73,16 +77,7 @@ public class formCliente extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == jbsalvar);
 				
-				Connection conn = null;
-				
-				try {
-					Statement stmt = conn.createStatement();
-					
-					
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			
 				
 				
 			}
@@ -90,6 +85,24 @@ public class formCliente extends JFrame{
 	
 	}
 	
+	public void adicionaClientes() {
+		
+		Clientes cliente = new Clientes();
+		
+		cliente.setNomeCliente(jtnome.getText());
+		cliente.setEndCliente(jtendereco.getText());
+		cliente.setFoneCliente(jtfone.getText());
+		cliente.setCpfCliente(jtcpf.getText());
+		
+		
+		
+		
+		
+		
+		
+		
+			
+	}
 	
 		
 
