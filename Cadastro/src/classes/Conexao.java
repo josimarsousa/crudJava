@@ -17,7 +17,7 @@ public class Conexao {
 			conn = DriverManager.getConnection(url);
 			System.out.println("Conectado ao banco.");
 			System.out.println();
-			Statement stmt = conn.createStatement();
+			/*Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT codCliente, nomeCliente, enderecoCliente, foneCliente, cpfCliente FROM Clientes");
 			
 			while(rs.next()) {
@@ -28,7 +28,7 @@ public class Conexao {
 				System.out.println("CPF: " + rs.getString("cpfCliente"));
 				System.out.println();
 				
-			}
+			}*/
 			
 	    } 
 		catch (SQLException e) {
