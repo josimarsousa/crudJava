@@ -82,21 +82,14 @@ public class formCliente extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == jbsalvar);
 				
-				Clientes cli = new Clientes();
-				cli.setNomeCliente(jtnome.getText());
-				cli.setEndCliente(jtendereco.getText());
-				cli.setFoneCliente(jtfone.getText());
-				cli.setCpfCliente(jtcpf.getText());
+				Clientes cliente = new Clientes();
+				cliente.setNomeCliente(jtnome.getText());
+				cliente.setEndCliente(jtendereco.getText());
+				cliente.setFoneCliente(jtfone.getText());
+				cliente.setCpfCliente(jtcpf.getText());
 				
-				formCliente adcli = null;
 				try {
-					adcli = new formCliente();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				try {
-					adcli.adicionaClientes(cli);
+					adicionaClientes(cliente);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -109,13 +102,16 @@ public class formCliente extends JFrame{
 	
 	public void adicionaClientes(Clientes cliente) throws SQLException {
 		
-		String sql = "insert into Clientes (codCleinte, nomeCliente, enderecoCliente, foneCliente, cpfCliente)" +
+		String sql = "insert into Clientes (nomeCliente, enderecoCliente, foneCliente, cpfCliente)" +
 					"values ( ?, ?, ?, ?)";
 		
 			PreparedStatement stmt = conexaoCliente.prepareStatement(sql);
 		
 			
-			stmt.setString(cliente.getNomeCliente());
+			stmt.setString(1, cliente.getNomeCliente());
+			stmt.setString(2, cliente.getEndCliente());
+			stmt.setString(3, cliente.getFoneCliente());
+			stmt.setString(4, cliente.getCpfCliente());
 			
 			stmt.execute();
 			stmt.close();
