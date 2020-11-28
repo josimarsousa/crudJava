@@ -11,12 +11,13 @@ public static void main(String[] args) throws SQLException {
 	
 	//Conexao.getConnection();
 	//System.out.println(Conexao.status);
-	
+	formCliente cliente = new formCliente();
 	Connection conexao = new ConexaoBD().getConnection();
 	System.out.println("Conexao on");
 	System.out.println();
-	conexao.close();
-	System.out.println("Conexao off");
+	cliente.setVisible(true);
+	
+
 	
 		
 	}

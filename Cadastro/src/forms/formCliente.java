@@ -19,7 +19,12 @@ public class formCliente extends JFrame{
 	
 	JButton jblimpar, jbsalvar, jbsair;
 	
-	public formCliente() {
+	private Connection conexaoCliente;
+	
+	public formCliente()  throws SQLException{
+		
+		this.conexaoCliente = ConexaoBD.getConnection();
+		
 		setTitle("Cadastro de Clientes");
 		setSize(550, 450);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -77,31 +82,44 @@ public class formCliente extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == jbsalvar);
 				
-			
+				Clientes cli = new Clientes();
+				cli.setNomeCliente(jtnome.getText());
+				cli.setEndCliente(jtendereco.getText());
+				cli.setFoneCliente(jtfone.getText());
+				cli.setCpfCliente(jtcpf.getText());
 				
+				formCliente adcli = null;
+				try {
+					adcli = new formCliente();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					adcli.adicionaClientes(cli);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
 	
 	}
 	
-	public void adicionaClientes() {
+	public void adicionaClientes(Clientes cliente) throws SQLException {
 		
-		Clientes cliente = new Clientes();
+		String sql = "insert into Clientes (codCleinte, nomeCliente, enderecoCliente, foneCliente, cpfCliente)" +
+					"values ( ?, ?, ?, ?)";
 		
-		cliente.setNomeCliente(jtnome.getText());
-		cliente.setEndCliente(jtendereco.getText());
-		cliente.setFoneCliente(jtfone.getText());
-		cliente.setCpfCliente(jtcpf.getText());
-		
-		
-		
-		
-		
-		
-		
+			PreparedStatement stmt = conexaoCliente.prepareStatement(sql);
 		
 			
+			stmt.setString(cliente.getNomeCliente());
+			
+			stmt.execute();
+			stmt.close();
+					
 	}
 	
 		
