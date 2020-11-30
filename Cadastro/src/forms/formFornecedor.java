@@ -1,9 +1,18 @@
 package forms;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import classes.Fornecedores;
+import classes.ConexaoBD;
 
 public class formFornecedor extends JFrame{
 	
@@ -11,7 +20,12 @@ public class formFornecedor extends JFrame{
 	JTextField jtcodFor, jtnomeFor, jtenderecoFor, jtcnpjFor, jtfoneFor;
 	JButton jblimpar, jbsalvar, jbsair;
 	
-	public formFornecedor() {
+	private Connection conexaoFornecedores;
+	
+	public formFornecedor() throws SQLException {
+		
+		this.conexaoFornecedores = ConexaoBD.getConnection();
+		
 		setTitle("Cadastro de Fornecedores");
 		setSize(550,450);	
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -60,8 +74,48 @@ public class formFornecedor extends JFrame{
 		jbsalvar.setBounds(115,340,90,30);
 		jbsair.setBounds(430,340,90,30);
 		
+		jbsalvar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == jbsalvar);
+				
+				Fornecedores fornecedor = new Fornecedores();
+				fornecedor.setNomeFornecedor(jtnomeFor.getText());
+				fornecedor.setEnderecoFornecedor(jtenderecoFor.getText());
+				fornecedor.setCnpjFornecedor(jtcnpjFor.getText());
+				fornecedor.setFoneFornecedor(jtfoneFor.getText());
+				
+				try {
+					adicionaFornecedores(fornecedor);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		
-	}	
+		
+	}
+	
+	public void adicionaFornecedores(Fornecedores fornecedor) throws SQLException {
+		
+		String sql = "insert into Fornecedores (nomeFornecedor, enderecoFornecedor, cnpjFornecedor, foneFornecedor)" +
+					"values ( ?, ?, ?, ?)";
+		
+			PreparedStatement stmt = conexaoFornecedores.prepareStatement(sql);
+		
+			
+			stmt.setString(1, fornecedor.getNomeFornecedor());
+			stmt.setString(2, fornecedor.getEnderecoFornecedor());
+			stmt.setString(3, fornecedor.getCnpjFornecedor());
+			stmt.setString(4, fornecedor.getFoneFornecedor());
+			
+			stmt.execute();
+			stmt.close();
+					
+	}
 		
 
 }

@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.mysql.cj.xdevapi.Statement;
-
 import classes.Clientes;
 import classes.ConexaoBD;
 

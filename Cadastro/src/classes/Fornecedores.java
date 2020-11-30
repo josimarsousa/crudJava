@@ -2,7 +2,7 @@ package classes;
 
 public class Fornecedores {
 	
-	private int idFornecedor;
+	private int codFornecedor;
 	private String nomeFornecedor;
 	private String enderecoFornecedor;
 	private String cnpjFornecedor;
@@ -42,7 +42,7 @@ public class Fornecedores {
 	}
 	
 	public int getIdFornecedor() {
-		return idFornecedor;
+		return codFornecedor;
 	}
 	
 	
