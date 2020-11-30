@@ -17,7 +17,7 @@ public static void main(String[] args) throws SQLException {
 	Connection conexao = new ConexaoBD().getConnection();
 	System.out.println("Conexao on");
 	System.out.println();
-	fornecedor.setVisible(true);
+	cliente.setVisible(true);
 	
 	
 

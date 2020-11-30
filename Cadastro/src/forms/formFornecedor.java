@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import classes.Fornecedores;
@@ -88,6 +89,7 @@ public class formFornecedor extends JFrame{
 				
 				try {
 					adicionaFornecedores(fornecedor);
+					JOptionPane.showMessageDialog(null, jtnomeFor.getText() + " foi incluido com sucesso");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
