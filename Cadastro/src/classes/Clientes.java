@@ -9,6 +9,9 @@ public class Clientes{
 	private String foneCliente;
 	private String cpfCliente;
 	
+	public Clientes() {
+		
+	}
 	
 	public String getNomeCliente() {
 		return nomeCliente;

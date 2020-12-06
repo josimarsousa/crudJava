@@ -1,4 +1,6 @@
 package forms;
+
+/*package forms;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -120,8 +122,144 @@ public class formCliente extends JFrame{
 	
 		
 
-}
+}*/
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import classes.Clientes;
+
+import classes.ConexaoBD;
+
+public class formCliente extends JFrame{
 	
+	private JPanel pFundo;
+	private JPanel pBotoes;
+	private JTable tabela;
+	private JScrollPane barraRolagem;
+	private JButton jbInserir;
+	private JButton jbEditar;
+	private JButton jbExcluir;
+	private DefaultTableModel modelo = new DefaultTableModel();
+	
+	public formCliente() {
+		super("Clientes");
+		criaJTable();
+		criaJanela();
+		
+	}
+	
+	public void criaJanela() {
+		jbInserir = new JButton("Cadastrar");
+		jbEditar = new JButton("Atualizar");
+		jbExcluir = new JButton("Remover");
+		
+		pBotoes = new JPanel();
+		pFundo = new JPanel();
+		
+		barraRolagem = new JScrollPane(tabela);
+		
+		pBotoes.add(jbInserir);
+		pBotoes.add(jbEditar);
+		pBotoes.add(jbExcluir);
+		
+		pFundo.setLayout(new BorderLayout());
+		pFundo.add(BorderLayout.CENTER, barraRolagem);
+		pFundo.add(BorderLayout.SOUTH, pBotoes);
+		
+		getContentPane().add(pFundo);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(500,230);
+		setVisible(true);
+		jbInserir.addActionListener(new jbInserirListener());
+		jbEditar.addActionListener(new jbEditarListener());
+		jbExcluir.addActionListener(new jbExcluirListener());
+				
+	}
+	
+		private void criaJTable() {
+			
+			tabela = new JTable(modelo);
+			modelo.addColumn("Codigo");
+			modelo.addColumn("Nome");
+			modelo.addColumn("Endereço");
+			modelo.addColumn("Fone");
+			modelo.addColumn("Cpf");
+			
+			tabela.getColumnModel().getColumn(0)
+			.setPreferredWidth(10);
+			tabela.getColumnModel().getColumn(1)
+			.setPreferredWidth(120);
+			tabela.getColumnModel().getColumn(1)
+			.setPreferredWidth(120);
+			tabela.getColumnModel().getColumn(1)
+			.setPreferredWidth(120);
+			tabela.getColumnModel().getColumn(1)
+			.setPreferredWidth(120);
+			pesquisar(modelo);
+			
+		}
+		
+		public static void pesquisar(DefaultTableModel modelo) throws SQLException {
+			modelo.setNumRows(0);
+			ConexaoBD conex = new ConexaoBD();
+			
+			for (Clientes c : conex.getClientes()) {
+				modelo.addRow(new Object[]{c.getCodCliente(), c.getNomeCliente(), c.getEndCliente(),
+					c.getFoneCliente(), c.getCpfCliente()});
+				}
+			}
+		private class jbInserirListener implements ActionListener{
+			public void actionPerformed(ActionEvent e) {
+				InserirCliente addCli = new InserirCliente(modelo);
+				addcli.setVisible(true);
+			}
+		}
+		
+		private class jbEditarListener implements ActionListener{
+			public void actionPerformed(ActionEvent e) {
+				int setaLinha = -1;
+				setaLinha = tabela.getSelectedRow();
+					if(setaLinha >= 0) {
+						int codcliente = (int)tabela.getValueAt(setaLinha, 0);
+						updateCliente upcli = new updateCliente(modelo, codCliente, setaLinha);
+						upcli.setVisible(true);
+					}else {
+						JOptionPane.showMessageDialog(null, "Primeiro, selecione uma linha de cliente!");
+					}
+			}
+			
+		}
+		
+		private class jbExcluirListener implements ActionListener{
+			public void actionPerformed(ActionEvent e) {
+				int setaLinha = -1;
+				setaLinha = tabela.getSelectedRow();
+				if(setaLinha >= 0) {
+					int codcliente = (int)tabela.getValueAt(setaLinha, 0);
+					ConexaoBD cli = new ConexaoBD();
+					try {
+						cli.remover(codcliente);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					modelo.removeRow(setaLinha);
+				}else {
+					JOptionPane.showMessageDialog(null, "Primeiro, selecione uma linha de cliente!");
+				}
+			}
+		}
+}
 	
 	
 
