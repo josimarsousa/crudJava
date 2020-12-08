@@ -151,7 +151,7 @@ public class formCliente extends JFrame{
 	private JButton jbExcluir;
 	private DefaultTableModel modelo = new DefaultTableModel();
 	
-	public formCliente() {
+	public formCliente() throws SQLException {
 		super("Clientes");
 		criaJTable();
 		criaJanela();
@@ -186,7 +186,7 @@ public class formCliente extends JFrame{
 				
 	}
 	
-		private void criaJTable() {
+		private void criaJTable() throws SQLException {
 			
 			tabela = new JTable(modelo);
 			modelo.addColumn("Codigo");
@@ -220,8 +220,8 @@ public class formCliente extends JFrame{
 			}
 		private class jbInserirListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
-				InserirCliente addCli = new InserirCliente(modelo);
-				addcli.setVisible(true);
+				formInserirCliente ic = new formInserirCliente(modelo);
+				ic.setVisible(true);
 			}
 		}
 		
@@ -231,7 +231,7 @@ public class formCliente extends JFrame{
 				setaLinha = tabela.getSelectedRow();
 					if(setaLinha >= 0) {
 						int codcliente = (int)tabela.getValueAt(setaLinha, 0);
-						updateCliente upcli = new updateCliente(modelo, codCliente, setaLinha);
+						formUpdateCliente upcli = new formUpdateCliente(modelo, codcliente, setaLinha);
 						upcli.setVisible(true);
 					}else {
 						JOptionPane.showMessageDialog(null, "Primeiro, selecione uma linha de cliente!");

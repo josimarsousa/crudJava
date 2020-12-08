@@ -44,10 +44,37 @@ public class ConexaoBD {
 		
 	}
 	
+		public void inserirCliente(Clientes c) {
+			if(c != null) {
+				Connection conn = null;
+				try {
+					conn = ConexaoBD.getConnection();
+					PreparedStatement stmt;
+					stmt = conn.prepareStatement("INSERT INTO Clientes(nomeCliente, enderecoCliente, foneCliente, cpfCliente)values(?, ?, ?, ?)");
+					
+					stmt.setString(1, c.getNomeCliente());
+					stmt.setString(2, c.getEndCliente());
+					stmt.setString(3, c.getFoneCliente());
+					stmt.setString(4, c.getCpfCliente());
+					
+					stmt.execute();
+					JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso! ");
+					conn.close();
+					stmt.close();
+					
+				}catch(Exception e) {
+					JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente no banco de dados." + e.getMessage());
+				}
+			}else {
+				System.out.println("O cliente enviado por parâmetro está vazio.");
+			}
+		}
+	
 		public List<Clientes> getClientes () throws SQLException{
 			
 			Connection conn = null;
 			
+			conn = ConexaoBD.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT codCliente, nomeCliente, enderecoCliente, foneCliente, cpfCliente FROM Clientes");
 			
@@ -55,6 +82,7 @@ public class ConexaoBD {
 			try {
 				while (rs.next()) {
 					Clientes cliente = new Clientes();
+					
 					
 					cliente.setNomeCliente(rs.getString("Nome"));
 					cliente.setEndCliente(rs.getString("Endereco"));
@@ -100,6 +128,31 @@ public class ConexaoBD {
 				JOptionPane.showMessageDialog(null, "O contato enviado por parâmetro está vazio");
 			}
 		}
-	
+		
+		public Clientes getClienteByCod(int cod) {
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			Clientes cliente = new Clientes();
+			try {
+				
+				Statement stmtbyCod = conn.createStatement();
+				ResultSet rsbyCod = stmtbyCod.executeQuery("SELECT * FROM Clientes WHERE codCliente=?");
+				while(rs.next()) {
+					cliente.setNomeCliente(rs.getString("Codigo"));
+					cliente.setEndCliente(rs.getString("Endereco"));
+					cliente.setFoneCliente(rs.getString("Fone"));
+					cliente.setCpfCliente(rs.getString("Cpf"));
+				}
+				conn.close();
+				stmt.close();
+				rs.close();
+			}catch(Exception e) {
+				JOptionPane.showMessageDialog(null, "Erro ao listar os clientes" + e.getMessage());
+			}
+			return cliente;
+		}
+
+			
 }
 	
