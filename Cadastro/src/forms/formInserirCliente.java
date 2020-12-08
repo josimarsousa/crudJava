@@ -36,6 +36,7 @@ public class formInserirCliente  extends JFrame {
 			super("Clientes");
 			criaJanela();
 			modelo = md;
+			setTitle("Cadastro de Clientes");
 			
 		}
 		
@@ -47,21 +48,21 @@ public class formInserirCliente  extends JFrame {
 			jlFone = new JLabel("Fone: ");
 			jlCpf = new JLabel("Cpf: ");
 			
-			JTextField jtNome = new JTextField(10);
-			JTextField jtEndereco = new JTextField();
-			JTextField jtFone = new JTextField();
-			JTextField jtCpf = new JTextField();
+			txtNome = new JTextField();
+			txtEndereco = new JTextField();
+			txtFone = new JTextField();
+			txtCpf = new JTextField();
 			
 			JPanel pFundo = new JPanel();
 			pFundo.setLayout(new GridLayout(4,2,2,4));
 			pFundo.add(jlNome);
-			pFundo.add(jtNome);
+			pFundo.add(txtNome);
 			pFundo.add(jlEndereco);
-			pFundo.add(jtEndereco);
+			pFundo.add(txtEndereco);
 			pFundo.add(jlFone);
-			pFundo.add(jtFone);
+			pFundo.add(txtFone);
 			pFundo.add(jlCpf);
-			pFundo.add(jtCpf);
+			pFundo.add(txtCpf);
 			pFundo.add(jbSalvar);
 			pFundo.add(jbLimpar);
 			

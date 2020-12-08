@@ -45,6 +45,10 @@ public class Clientes{
 		this.cpfCliente = cpfCliente;
 	}
 	
+	public void setCodigoCliente(int codcliente) {
+		this.codCliente = codcliente;
+	}
+	
 	public int getCodCliente() {
 		return codCliente;
 	}

@@ -83,11 +83,11 @@ public class ConexaoBD {
 				while (rs.next()) {
 					Clientes cliente = new Clientes();
 					
-					
-					cliente.setNomeCliente(rs.getString("Nome"));
-					cliente.setEndCliente(rs.getString("Endereco"));
-					cliente.setFoneCliente(rs.getString("Fone"));
-					cliente.setCpfCliente(rs.getString("Cpf"));
+					cliente.setCodigoCliente(rs.getInt("codCliente"));
+					cliente.setNomeCliente(rs.getString("nomeCliente"));
+					cliente.setEndCliente(rs.getString("enderecoCliente"));
+					cliente.setFoneCliente(rs.getString("foneCliente"));
+					cliente.setCpfCliente(rs.getString("cpfCliente"));
 					clientes.add(cliente);
 				}
 				conn.close();
