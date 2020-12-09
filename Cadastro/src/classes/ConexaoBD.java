@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class ConexaoBD {
 	
 	//static String status="";
-		
+	private int setaCodigo;	
 	public static Connection getConnection() throws SQLException {
 		
 		Connection conn = null;
@@ -72,6 +72,7 @@ public class ConexaoBD {
 	
 		public List<Clientes> getClientes () throws SQLException{
 			
+			
 			Connection conn = null;
 			
 			conn = ConexaoBD.getConnection();
@@ -82,7 +83,7 @@ public class ConexaoBD {
 			try {
 				while (rs.next()) {
 					Clientes cliente = new Clientes();
-					
+							
 					cliente.setCodigoCliente(rs.getInt("codCliente"));
 					cliente.setNomeCliente(rs.getString("nomeCliente"));
 					cliente.setEndCliente(rs.getString("enderecoCliente"));
@@ -135,14 +136,17 @@ public class ConexaoBD {
 			ResultSet rs = null;
 			Clientes cliente = new Clientes();
 			try {
-				
-				Statement stmtbyCod = conn.createStatement();
-				ResultSet rsbyCod = stmtbyCod.executeQuery("SELECT * FROM Clientes WHERE codCliente=?");
+				String sql = "SELECT * FROM Clientes WHERE codCliente=?";
+				conn = ConexaoBD.getConnection();
+				stmt = conn.prepareStatement(sql);
+			    stmt.setInt(1, cod);
+			    rs = stmt.executeQuery();
 				while(rs.next()) {
-					cliente.setNomeCliente(rs.getString("Codigo"));
-					cliente.setEndCliente(rs.getString("Endereco"));
-					cliente.setFoneCliente(rs.getString("Fone"));
-					cliente.setCpfCliente(rs.getString("Cpf"));
+					cliente.setCodigoCliente(rs.getInt("codCliente"));
+					cliente.setNomeCliente(rs.getString("nomeCliente"));
+					cliente.setEndCliente(rs.getString("enderecoCliente"));
+					cliente.setFoneCliente(rs.getString("foneCliente"));
+					cliente.setCpfCliente(rs.getString("cpfCliente"));
 				}
 				conn.close();
 				stmt.close();

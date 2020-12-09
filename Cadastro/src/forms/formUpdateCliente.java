@@ -32,7 +32,6 @@ public class formUpdateCliente extends JFrame {
 	private JTextField txtFone;
 	private JTextField txtCpf;
 	private JTextField txtCodigo;
-		
 	Clientes cliente;
 	private int setaLinha;
 	
@@ -40,8 +39,11 @@ public class formUpdateCliente extends JFrame {
 		super("Clientes");
 		criaJanela();
 		modelo = md;
+		
 		ConexaoBD conn = new ConexaoBD();
 		cliente = conn.getClienteByCod(codcliente);
+		
+		
 		txtCodigo.setText(Integer.toString(cliente.getCodCliente()));
 		txtNome.setText(cliente.getNomeCliente());
 		txtEndereco.setText(cliente.getEndCliente());
