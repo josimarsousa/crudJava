@@ -42,9 +42,7 @@ public class formUpdateCliente extends JFrame {
 		
 		ConexaoBD conn = new ConexaoBD();
 		cliente = conn.getClienteByCod(codcliente);
-		
-		
-		txtCodigo.setText(Integer.toString(cliente.getCodCliente()));
+				
 		txtNome.setText(cliente.getNomeCliente());
 		txtEndereco.setText(cliente.getEndCliente());
 		txtFone.setText(cliente.getFoneCliente());

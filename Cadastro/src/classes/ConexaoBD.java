@@ -119,8 +119,21 @@ public class ConexaoBD {
 			if(cliente != null) {
 				Connection conn = null;
 				try {
-					Statement stmt = conn.createStatement();
-					ResultSet rs = stmt.executeQuery("UPDATE CLIENTES SET nomeCliente=?, enderecoCliente=?, foneCliente=?, cpfCliente=? WHERE codCliente =?");
+					conn = ConexaoBD.getConnection();
+					PreparedStatement stmt;
+					stmt = conn.prepareStatement("UPDATE CLIENTES SET nomeCliente=?, enderecoCliente=?, foneCliente=?, cpfCliente=? WHERE codCliente =?");
+				
+					stmt.setInt(1, cliente.getCodCliente());
+					stmt.setString(2, cliente.getNomeCliente());
+					stmt.setString(3, cliente.getEndCliente());
+					stmt.setString(4, cliente.getFoneCliente());
+					stmt.setString(5, cliente.getCpfCliente());
+					
+					stmt.execute();
+					JOptionPane.showMessageDialog(null, "O cliente " + cliente.getNomeCliente() + "foi alterado com sucesso! ");
+					conn.close();
+					stmt.close();
+					
 				}catch(Exception e) {
 					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados do cliente no banco de dados" + e.getMessage());
 				}
