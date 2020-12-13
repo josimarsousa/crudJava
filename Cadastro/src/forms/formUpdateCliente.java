@@ -35,14 +35,15 @@ public class formUpdateCliente extends JFrame {
 	Clientes cliente;
 	private int setaLinha;
 	
-	public formUpdateCliente(DefaultTableModel md, int codcliente, int linha) {
+	public formUpdateCliente(DefaultTableModel md, int codCliente, int linha) {
 		super("Clientes");
 		criaJanela();
 		modelo = md;
 		
 		ConexaoBD conn = new ConexaoBD();
-		cliente = conn.getClienteByCod(codcliente);
-				
+		cliente = conn.getClienteByCod(codCliente);
+			
+		txtCodigo.setText(Integer.toString(cliente.getCodCliente()));
 		txtNome.setText(cliente.getNomeCliente());
 		txtEndereco.setText(cliente.getEndCliente());
 		txtFone.setText(cliente.getFoneCliente());
@@ -61,27 +62,27 @@ public class formUpdateCliente extends JFrame {
 		JLabel jlFone = new JLabel("Fone");
 		JLabel jlCpf = new JLabel("Cpf");
 		
-		JTextField txCodigo = new JTextField();
-		JTextField txNome = new JTextField();
-		JTextField txEndereco = new JTextField();
-		JTextField txFone = new JTextField();
-		JTextField txCpf = new JTextField();
+		txtCodigo = new JTextField();
+		txtNome = new JTextField();
+		txtEndereco = new JTextField();
+	    txtFone = new JTextField();
+		txtCpf = new JTextField();
 		
-		txCodigo.setEditable(false);
+		txtCodigo.setEditable(false);
 		
 		JPanel pFundo = new JPanel();
 		
 		pFundo.setLayout(new GridLayout(5,2,2,4));
 		pFundo.add(jlCodigo);
-		pFundo.add(txCodigo);
+		pFundo.add(txtCodigo);
 		pFundo.add(jlNome);
-		pFundo.add(txNome);
+		pFundo.add(txtNome);
 		pFundo.add(jlEndereco);
-		pFundo.add(txEndereco);
+		pFundo.add(txtEndereco);
 		pFundo.add(jlFone);
-		pFundo.add(txFone);
+		pFundo.add(txtFone);
 		pFundo.add(jlCpf);
-		pFundo.add(txCpf);
+		pFundo.add(txtCpf);
 		
 		pFundo.add(jbSalvar);
 		pFundo.add(jbLimpar);
@@ -105,6 +106,7 @@ public class formUpdateCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Clientes c = new Clientes();
 				
+				c.setCodigoCliente(Integer.parseInt(txtCodigo.getText()));
 				c.setNomeCliente(txtNome.getText());
 				c.setEndCliente(txtEndereco.getText());
 				c.setFoneCliente(txtFone.getText());

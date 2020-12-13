@@ -196,7 +196,7 @@ public class formCliente extends JFrame{
 			modelo.addColumn("Cpf");
 			
 			tabela.getColumnModel().getColumn(0)
-			.setPreferredWidth(10);
+			.setPreferredWidth(20);
 			tabela.getColumnModel().getColumn(1)
 			.setPreferredWidth(120);
 			tabela.getColumnModel().getColumn(1)
@@ -230,8 +230,8 @@ public class formCliente extends JFrame{
 				int setaLinha = -1;
 				setaLinha = tabela.getSelectedRow();
 					if(setaLinha >= 0) {
-						int codcliente = (int)tabela.getValueAt(setaLinha, 0);
-						formUpdateCliente upcli = new formUpdateCliente(modelo, codcliente, setaLinha);
+						int codCliente = (int)tabela.getValueAt(setaLinha, 0);
+						formUpdateCliente upcli = new formUpdateCliente(modelo, codCliente, setaLinha);
 						upcli.setVisible(true);
 					}else {
 						JOptionPane.showMessageDialog(null, "Primeiro, selecione uma linha de cliente!");

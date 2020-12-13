@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class ConexaoBD {
 	
 	//static String status="";
-	private int setaCodigo;	
+
 	public static Connection getConnection() throws SQLException {
 		
 		Connection conn = null;
@@ -104,9 +104,9 @@ public class ConexaoBD {
 		public void remover(int codcliente) throws SQLException {
 			
 			Connection conn = null;
-			
+			conn = ConexaoBD.getConnection(); 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("DELETE FROM CLIENTES WHERE codCliente =?");
+			ResultSet rs = stmt.executeQuery("DELETE FROM Clientes WHERE codCliente =?");
 			
 			try {
 				
@@ -118,29 +118,32 @@ public class ConexaoBD {
 		public void updateCliente(Clientes cliente) {
 			if(cliente != null) {
 				Connection conn = null;
+				String sql = "Update Clientes set nomeCliente=?, enderecoCliente=?, foneCliente=?, cpfCliente=? WHERE codCliente =?";
 				try {
 					conn = ConexaoBD.getConnection();
 					PreparedStatement stmt;
-					stmt = conn.prepareStatement("UPDATE CLIENTES SET nomeCliente=?, enderecoCliente=?, foneCliente=?, cpfCliente=? WHERE codCliente =?");
+					stmt = conn.prepareStatement(sql);
 				
-					stmt.setInt(1, cliente.getCodCliente());
-					stmt.setString(2, cliente.getNomeCliente());
-					stmt.setString(3, cliente.getEndCliente());
-					stmt.setString(4, cliente.getFoneCliente());
-					stmt.setString(5, cliente.getCpfCliente());
+					
+					stmt.setString(1, cliente.getNomeCliente());
+					stmt.setString(2, cliente.getEndCliente());
+					stmt.setString(3, cliente.getFoneCliente());
+					stmt.setString(4, cliente.getCpfCliente());
+					stmt.setInt(5, cliente.getCodCliente());
 					
 					stmt.execute();
-					JOptionPane.showMessageDialog(null, "O cliente " + cliente.getNomeCliente() + "foi alterado com sucesso! ");
-					conn.close();
 					stmt.close();
-					
+					JOptionPane.showMessageDialog(null, "O cliente foi alterado com sucesso! ");
+					conn.close();
+										
 				}catch(Exception e) {
-					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados do cliente no banco de dados" + e.getMessage());
-				}
+					JOptionPane.showMessageDialog(null, "Erro ao atualizar os dados do cliente no banco de dados " + e.getMessage());
+				}}else {
 				
-			}else {
+			
 				JOptionPane.showMessageDialog(null, "O contato enviado por parâmetro está vazio");
-			}
+				} 
+			
 		}
 		
 		public Clientes getClienteByCod(int cod) {

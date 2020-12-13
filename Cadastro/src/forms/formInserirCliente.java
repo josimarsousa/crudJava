@@ -48,6 +48,7 @@ public class formInserirCliente  extends JFrame {
 			jlFone = new JLabel("Fone: ");
 			jlCpf = new JLabel("Cpf: ");
 			
+			
 			txtNome = new JTextField();
 			txtEndereco = new JTextField();
 			txtFone = new JTextField();
@@ -79,6 +80,7 @@ public class formInserirCliente  extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				Clientes c = new Clientes();
+				
 				c.setNomeCliente(txtNome.getText());
 				c.setEndCliente(txtEndereco.getText());
 				c.setFoneCliente(txtFone.getText());
@@ -99,6 +101,8 @@ public class formInserirCliente  extends JFrame {
 		private class jbLimparListener implements ActionListener{
 			
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				txtNome.setText("");
 				txtEndereco.setText("");
 				txtFone.setText("");
