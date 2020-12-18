@@ -104,15 +104,19 @@ public class ConexaoBD {
 		public void remover(int codcliente) throws SQLException {
 			
 			Connection conn = null;
-			conn = ConexaoBD.getConnection(); 
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("DELETE FROM Clientes WHERE codCliente =?");
-			
 			try {
-				
+			conn = ConexaoBD.getConnection(); 
+			PreparedStatement stmt;
+			stmt = conn.prepareStatement("DELETE FROM Clientes WHERE codCliente =?");
+			
+			stmt.setInt(1, codcliente);
+			stmt.execute();
+			
+			conn.close();
 			}catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Erro ao excluir contato do banco de dados " + e.getMessage());
+				JOptionPane.showMessageDialog(null, "Erro ao excluir o cliente do banco de dados" + e.getMessage());
 			}
+			
 		}
 		
 		public void updateCliente(Clientes cliente) {
